@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         ref:"Booking",
     }]
     
-})
+})//cs
 
 
 module.exports = mongoose.model("User",userSchema);
