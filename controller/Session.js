@@ -43,23 +43,19 @@ exports.createBooking  = async(req,res) =>{
 
         const session = await Session.findByIdAndUpdate(booked,{
             booked:true,
-        })
-
-        const booking = await Booking.create({
-            booked:booked,
             bookedby:id,
         })
 
         const user = await User.findByIdAndUpdate(id,{
             $put:{
-                bookings:booking._id,
+                bookings:session._id,
             }
         })
 
         return res.status(200).json({
             success:"True",
             message:"Session Booked",
-            booking,
+            session,
             user
         })
 
@@ -77,7 +73,7 @@ exports.createBooking  = async(req,res) =>{
 exports.getAllSessions = async(req,res)=>{
     try{
 
-        const sessions = await Session.find({booked:false});
+        const sessions = await Session.find({booked:false}).populate("creater").populate("bookedby").exec();
 
         return res.status(200).json({
             success:"True",
@@ -102,7 +98,7 @@ exports.getUserBooking = async(req,res)=>{
 
         const sessions = await Session.find({booked:true , creater:id , time:{
             $gte:Date.now()
-        } });
+        } }).populate("creater").populate("bookedby").exec();
 
         return res.status(200).json({
             success:"True",

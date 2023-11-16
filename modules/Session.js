@@ -14,6 +14,10 @@ const sessionSchema = new mongoose.Schema({
     },
     booked:{
         type:Boolean,
+    },
+    bookedby:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
     }
     
 })
