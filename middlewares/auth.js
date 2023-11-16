@@ -31,7 +31,7 @@ exports.auth = async (req,res,next)=>{
                 message:"Tokine is  invalid"
             })
         }
-        //this is used  to go to  next  middleware
+   
         next();
     }
     catch(err){

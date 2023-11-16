@@ -71,7 +71,7 @@ exports.signUp = async(req,res)=>{
 
 }
 
-
+//login function
 exports.login = async(req,res)=>{
 
     try{
@@ -94,7 +94,7 @@ exports.login = async(req,res)=>{
             })
         }
 
-        //we  can check passwords  directly using  if else and bcrrytp compare  fuction
+        
         if(await bcrypt.compare(password,user.password) ){
 
             const token = jwt.sign({
@@ -106,7 +106,7 @@ exports.login = async(req,res)=>{
             }
             );
 
-            //check here there may be any parsing  error  with object 
+            
             user.toObject();
             user.token  = token;
             user.password = undefined;
