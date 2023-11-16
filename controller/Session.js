@@ -1,6 +1,6 @@
 const User = require("../modules/User");
 const Session = require("../modules/Session");
-const Booking = require("../modules/Booking")
+
 
 exports.createSession = async(req,res) =>{
 
