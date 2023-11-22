@@ -31,15 +31,3 @@ app.listen(PORT, () => {
 	console.log(`App is running at ${PORT}`)
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
